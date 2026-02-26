@@ -14,22 +14,13 @@ services:
           name: mahallahub-db
           property: connectionString
       - key: REDIS_URL
-        fromService:
-          type: redis
-          name: mahallahub-redis
-          property: connectionString
+        value: redis://red-d6fun63uibrs739c173g:6379
       - key: SECRET_KEY
         generateValue: true
       - key: PYTHON_VERSION
         value: 3.11.4
       - key: ALLOWED_HOSTS
         value: ".onrender.com,www.sbf-consultancy.net"
-
-  # Redis (for Django Channels/SOS System)
-  - type: redis
-    name: mahallahub-redis
-    plan: free
-    ipAllowList: [] # Only allow internal connections
 
 # Database (PostgreSQL)
 databases:
