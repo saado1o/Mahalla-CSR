@@ -34,10 +34,7 @@ services:
     startCommand: npm start
     envVars:
       - key: NEXT_PUBLIC_API_URL
-        fromService:
-          type: web
-          name: mahallahub-api
-          property: url
+        value: https://mahallahub-api.onrender.com
       - key: NODE_VERSION
         value: 18.17.0
 
