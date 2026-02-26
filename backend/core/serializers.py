@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Mahalla, Mosque, NewsFeed, Alert, Skill
+from .models import User, Mahalla, Mosque, NewsFeed, Alert, Skill, VolunteerPosting, VolunteerApplication, ZakatContributionHead, ZakatLedgerEntry
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,3 +34,31 @@ class SkillSerializer(serializers.ModelSerializer):
         model = Skill
         fields = ['id', 'user', 'username', 'name', 'is_barter_enabled']
         read_only_fields = ['user']
+
+class VolunteerPostingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = VolunteerPosting
+        fields = '__all__'
+
+class VolunteerApplicationSerializer(serializers.ModelSerializer):
+    username = serializers.ReadOnlyField(source='user.username')
+    posting_title = serializers.ReadOnlyField(source='posting.title')
+
+    class Meta:
+        model = VolunteerApplication
+        fields = '__all__'
+        read_only_fields = ['user', 'applied_at']
+
+class ZakatContributionHeadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ZakatContributionHead
+        fields = '__all__'
+
+class ZakatLedgerEntrySerializer(serializers.ModelSerializer):
+    username = serializers.ReadOnlyField(source='user.username')
+    head_name = serializers.ReadOnlyField(source='head.name')
+
+    class Meta:
+        model = ZakatLedgerEntry
+        fields = '__all__'
+        read_only_fields = ['user', 'date']
