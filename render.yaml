@@ -1,0 +1,53 @@
+services:
+  # Backend API Service (Django + Daphne for WebSockets)
+  - type: web
+    name: mahallahub-api
+    env: python
+    rootDir: backend
+    buildCommand: ./build.sh
+    startCommand: daphne -b 0.0.0.0 -p $PORT server.asgi:application
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mahallahub-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: mahallahub-redis
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: 3.11.4
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com,www.sbf-consultancy.net"
+
+  # Frontend Web Service (Next.js)
+  - type: web
+    name: mahallahub-frontend
+    env: node
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: mahallahub-api
+          property: url
+      - key: NODE_VERSION
+        value: 18.17.0
+
+# Database (PostgreSQL)
+databases:
+  - name: mahallahub-db
+    plan: free
+
+# Redis (for Django Channels/SOS System)
+redis:
+  - name: mahallahub-redis
+    plan: free
+    ipAllowList: [] # Only allow internal connections
