@@ -41,13 +41,13 @@ services:
       - key: NODE_VERSION
         value: 18.17.0
 
+  # Redis (for Django Channels/SOS System)
+  - type: redis
+    name: mahallahub-redis
+    plan: free
+    ipAllowList: [] # Only allow internal connections
+
 # Database (PostgreSQL)
 databases:
   - name: mahallahub-db
     plan: free
-
-# Redis (for Django Channels/SOS System)
-redis:
-  - name: mahallahub-redis
-    plan: free
-    ipAllowList: [] # Only allow internal connections
