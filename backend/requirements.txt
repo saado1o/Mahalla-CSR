@@ -1,0 +1,15 @@
+django>=5.0
+djangorestframework
+django-rest-auth
+django-allauth
+psycopg2-binary
+django-cors-headers
+channels[daphne]
+celery
+redis
+django-filter
+# For GeoDjango, we assume the environment has GDAL/GEOS installed as per usual GIS setups.
+# In Docker, we will install these in the Dockerfile.
+dj-database-url
+whitenoise
+gunicorn
