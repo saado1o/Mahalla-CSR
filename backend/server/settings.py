@@ -25,9 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(k9z992ciz7e7wurhatuoy!pq-&5#_j33p-$!4%lq@5@9+we5o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*'] # Allowed everything for deployment ease later (Render backend URL string)
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '.onrender.com',
+    'www.sbf-consultancy.net'
+]
 
 
 # Application definition
@@ -141,13 +146,20 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
-CORS_ALLOW_ALL_ORIGINS = True # Development only
+if not DEBUG:
+    CORS_ALLOWED_ORIGINS = [
+        "https://www.sbf-consultancy.net",
+    ]
+else:
+    CORS_ALLOW_ALL_ORIGINS = True
 
+# Redis for Channels - use environment variable REDIS_URL for production
+REDIS_URL = os.environ.get('REDIS_URL', 'redis://redis:6379')
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("redis", 6379)],
+            "hosts": [REDIS_URL],
         },
     },
 }
