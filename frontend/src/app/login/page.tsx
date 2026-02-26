@@ -89,7 +89,7 @@ export default function LoginPage() {
             <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10">
                 <div className="flex justify-center flex-col items-center">
                     <div className="w-20 h-20 rounded-full flex items-center justify-center neo-glow overflow-hidden border-4 border-primary/50 shadow-2xl mb-4 cursor-pointer" onClick={() => router.push('/')}>
-                        <img src="/mohalla-app/logo.png" alt="MahallaHub Logo" className="w-full h-full object-cover scale-110" />
+                        <img src="/mahalla-app/logo.png" alt="MahallaHub Logo" className="w-full h-full object-cover scale-110" />
                     </div>
                     <h2 className="mt-2 text-center text-3xl font-black tracking-tight text-white uppercase">
                         Mahalla<span className="text-[#14B8A6]">Hub</span>

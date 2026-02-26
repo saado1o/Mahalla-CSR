@@ -1,17 +1,8 @@
-import type { Metadata } from 'next';
+"use client";
+
 import Link from 'next/link';
 import { ShieldCheck, BellRing, BookOpen, Briefcase, Calculator, ArrowRight, CheckCircle2, Globe, Lock, Users } from 'lucide-react';
 
-export const metadata: Metadata = {
-    title: 'MahallaHub | Secure Neighborhood Networking by SBF Consultancy',
-    description: 'MahallaHub is a privacy-first, verified Islamic community network empowering neighbors through secure SOS alerts, skill bartering, and community management.',
-    keywords: 'MahallaHub, Islamic Community Network, SBF Consultancy, Neighborhood SOS App, Skill Barter Platform, Zakat Calculator, Verified Residents Network',
-    openGraph: {
-        title: 'MahallaHub | The Premier Islamic Community Network',
-        description: 'A revolutionary platform to connect, protect, and empower your local Mahalla through verified networking and real-time emergency broadcasts.',
-        type: 'website',
-    }
-};
 
 // JSON-LD for Answer Engines & Search Engines
 const schemaMarkup = {
@@ -68,8 +59,8 @@ export default function LandingPage() {
                 <header className="fixed top-0 w-full glassmorphism z-50 border-b border-white/5 bg-[#0F172A]/80 backdrop-blur-lg">
                     <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                         <div className="flex items-center gap-4 relative h-20">
-                            <div className="w-40 h-40 rounded-full flex items-center justify-center neo-glow overflow-hidden border-4 border-[#14B8A6]/50 shadow-2xl shrink-0 absolute top-1/2 -translate-y-1/2 -left-4 z-50 bg-[#0F172A] cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
-                                <img src="/mohalla-app/logo.png" alt="MahallaHub Logo" className="w-full h-full object-cover scale-110" />
+                            <div className="w-40 h-40 rounded-full flex items-center justify-center neo-glow overflow-hidden border-4 border-[#14B8A6]/50 shadow-2xl shrink-0 absolute top-1/2 -translate-y-1/2 -left-4 z-50 bg-[#0F172A] cursor-pointer" onClick={() => typeof window !== 'undefined' && window.scrollTo(0, 0)}>
+                                <img src="/mahalla-app/logo.png" alt="MahallaHub Logo" className="w-full h-full object-cover scale-110" />
                             </div>
                         </div>
                         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-[#94A3B8]">
