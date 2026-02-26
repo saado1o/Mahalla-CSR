@@ -25,19 +25,6 @@ services:
       - key: ALLOWED_HOSTS
         value: ".onrender.com,www.sbf-consultancy.net"
 
-  # Frontend Web Service (Next.js)
-  - type: web
-    name: mahallahub-frontend
-    env: node
-    rootDir: frontend
-    buildCommand: npm install && npm run build
-    startCommand: npm start
-    envVars:
-      - key: NEXT_PUBLIC_API_URL
-        value: https://mahallahub-api.onrender.com
-      - key: NODE_VERSION
-        value: 18.17.0
-
   # Redis (for Django Channels/SOS System)
   - type: redis
     name: mahallahub-redis
