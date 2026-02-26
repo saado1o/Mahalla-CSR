@@ -1,0 +1,24 @@
+<IfModule mod_mime.c>
+  AddType text/css .css
+  AddType application/javascript .js
+  AddType font/woff2 .woff2
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /mahalla-app/
+  
+  # Ensure index.html is served for directories
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^(.*)$ $1index.html [L]
+  
+  # Ensure _next folder is directly accessible
+  RewriteRule ^(_next/.*)$ $1 [L]
+</IfModule>
+
+# Ensure underscores are not hidden
+<IfModule mod_autoindex.c>
+  IndexIgnoreReset ON
+</IfModule>
+
+Options +FollowSymLinks
