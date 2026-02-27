@@ -14,13 +14,13 @@ services:
           name: mahallahub-db
           property: connectionString
       - key: REDIS_URL
-        value: redis://red-d6fun63uibrs739c173g:6379
+        value: rediss://red-d6fun63uibrs739c173g:bnnCj937Mb5ho72yRMyhwnBKM0z5pygb@oregon-keyvalue.render.com:6379
       - key: SECRET_KEY
         generateValue: true
       - key: PYTHON_VERSION
         value: 3.11.4
       - key: ALLOWED_HOSTS
-        value: ".onrender.com,www.sbf-consultancy.net"
+        value: ".onrender.com,www.sbf-consultancy.net,mahalla-three.vercel.app"
 
 # Database (PostgreSQL)
 databases:

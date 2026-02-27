@@ -31,7 +31,8 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '.onrender.com',
-    'www.sbf-consultancy.net'
+    'www.sbf-consultancy.net',
+    'mahalla-three.vercel.app',
 ]
 
 
@@ -149,6 +150,7 @@ REST_FRAMEWORK = {
 if not DEBUG:
     CORS_ALLOWED_ORIGINS = [
         "https://www.sbf-consultancy.net",
+        "https://mahalla-three.vercel.app",
     ]
 else:
     CORS_ALLOW_ALL_ORIGINS = True
