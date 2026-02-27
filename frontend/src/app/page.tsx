@@ -60,7 +60,7 @@ export default function LandingPage() {
                     <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                         <div className="flex items-center gap-4 relative h-20">
                             <div className="w-40 h-40 rounded-full flex items-center justify-center neo-glow overflow-hidden border-4 border-[#14B8A6]/50 shadow-2xl shrink-0 absolute top-1/2 -translate-y-1/2 -left-4 z-50 bg-[#0F172A] cursor-pointer" onClick={() => typeof window !== 'undefined' && window.scrollTo(0, 0)}>
-                                <img src="/mohalla-app/logo.png" alt="MahallaHub Logo" className="w-full h-full object-cover scale-110" />
+                                <img src="/logo.png" alt="MahallaHub Logo" className="w-full h-full object-cover scale-110" />
                             </div>
                         </div>
                         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-[#94A3B8]">

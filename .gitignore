@@ -1,0 +1,41 @@
+# Environments
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+db.sqlite3
+*.sqlite3-journal
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Next.js
+frontend/.next/
+frontend/out/
+
+# Build outputs
+mohalla-app/
+ROBUST_REBUILD.js
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

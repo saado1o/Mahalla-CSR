@@ -22,18 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(k9z992ciz7e7wurhatuoy!pq-&5#_j33p-$!4%lq@5@9+we5o'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-(k9z992ciz7e7wurhatuoy!pq-&5#_j33p-$!4%lq@5@9+we5o')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '.onrender.com',
-    'www.sbf-consultancy.net',
-    'mahalla-three.vercel.app',
-]
+ALLOWED_HOSTS = [host.strip() for host in os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',') if host.strip()]
 
 
 # Application definition
@@ -148,10 +142,8 @@ REST_FRAMEWORK = {
 }
 
 if not DEBUG:
-    CORS_ALLOWED_ORIGINS = [
-        "https://www.sbf-consultancy.net",
-        "https://mahalla-three.vercel.app",
-    ]
+    cors_env = os.environ.get('CORS_ALLOWED_ORIGINS', "http://localhost:3000")
+    CORS_ALLOWED_ORIGINS = [origin.strip() for origin in cors_env.split(',') if origin.strip()]
 else:
     CORS_ALLOW_ALL_ORIGINS = True
 

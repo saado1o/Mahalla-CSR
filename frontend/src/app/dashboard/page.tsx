@@ -214,7 +214,7 @@ export default function Dashboard() {
         <div className="pt-8 pb-4 flex flex-col items-center justify-center relative">
           <div className={cn("flex flex-col items-center", !isSidebarOpen && "md:hidden")}>
             <div className="w-28 h-28 rounded-full flex items-center justify-center neo-glow overflow-hidden border-2 border-[#14B8A6]/30 shadow-2xl shrink-0 bg-[#0F172A]">
-              <img src="/mahalla-app/logo.png" alt="MahallaHub Logo" className="w-full h-full object-cover scale-110" />
+              <img src="/logo.png" alt="MahallaHub Logo" className="w-full h-full object-cover scale-110" />
             </div>
           </div>
           <button
