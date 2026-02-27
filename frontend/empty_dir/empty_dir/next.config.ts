@@ -1,9 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'export',
   basePath: '/mohalla-app',
   trailingSlash: true,
-  // Removed output: 'export' to enable full Vercel capabilities (Image Optimization, etc.)
+  // Ensure images are also correctly prefixed and compatible with static export
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
