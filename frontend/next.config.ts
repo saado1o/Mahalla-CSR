@@ -1,9 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // basePath: '/mohalla-app', // Uncomment if deploying to a subdirectory
+  output: 'export',
+  // basePath sets the directory the app is served from
+  basePath: '/mohalla-hub',
   trailingSlash: true,
-  // Removed output: 'export' to enable full Vercel capabilities (Image Optimization, etc.)
+  images: {
+    unoptimized: true, // Required for static HTML export
+  }
 };
 
 export default nextConfig;

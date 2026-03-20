@@ -148,14 +148,21 @@ else:
     CORS_ALLOW_ALL_ORIGINS = True
 
 # Redis for Channels - use environment variable REDIS_URL for production
-REDIS_URL = os.environ.get('REDIS_URL', 'redis://redis:6379')
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [REDIS_URL],
+REDIS_URL = os.environ.get('REDIS_URL', '')
+if REDIS_URL:
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": "channels_redis.core.RedisChannelLayer",
+            "CONFIG": {
+                "hosts": [REDIS_URL],
+            },
         },
-    },
-}
+    }
+else:
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": "channels.layers.InMemoryChannelLayer",
+        },
+    }
 
 ASGI_APPLICATION = 'server.asgi.application'
