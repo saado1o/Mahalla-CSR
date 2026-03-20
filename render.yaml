@@ -2,10 +2,8 @@ services:
   # Backend API Service (Django + Daphne for WebSockets)
   - type: web
     name: mahallahub-api
-    env: python
+    env: docker
     rootDir: backend
-    buildCommand: ./build.sh
-    startCommand: daphne -b 0.0.0.0 -p $PORT server.asgi:application
     envVars:
       - key: DEBUG
         value: "False"
