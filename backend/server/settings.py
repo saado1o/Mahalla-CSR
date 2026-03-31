@@ -142,7 +142,7 @@ REST_FRAMEWORK = {
 }
 
 if not DEBUG:
-    cors_env = os.environ.get('CORS_ALLOWED_ORIGINS', "http://localhost:3000")
+    cors_env = os.environ.get('CORS_ALLOWED_ORIGINS', "http://localhost:3000,https://sbf-consultancy.net")
     CORS_ALLOWED_ORIGINS = [origin.strip() for origin in cors_env.split(',') if origin.strip()]
 else:
     CORS_ALLOW_ALL_ORIGINS = True

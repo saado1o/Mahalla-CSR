@@ -71,10 +71,10 @@ export default function LoginPage() {
     const handleAutoFill = (role: 'citizen' | 'admin') => {
         if (role === 'admin') {
             setUsername('admin');
-            setPassword('admin');
+            setPassword('adminpass');
         } else {
             setUsername('citizen1');
-            setPassword('password123');
+            setPassword('citizenpass');
         }
     };
 
