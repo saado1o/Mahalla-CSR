@@ -12,17 +12,29 @@ class Command(BaseCommand):
         self.stdout.write('Seeding database...')
 
         # Create Admin
-        if not User.objects.filter(username='admin').exists():
-            User.objects.create_superuser('admin', 'admin@mahalla.com', 'adminpass', is_verified=True)
+        admin_user = User.objects.filter(username='admin').first()
+        if not admin_user:
+            admin_user = User.objects.create_superuser('admin', 'admin@mahalla.com', 'adminpass', is_verified=True)
             self.stdout.write('Created superuser: admin')
-
+        else:
+            admin_user.set_password('adminpass')
+            admin_user.is_verified = True
+            admin_user.save()
+            self.stdout.write('Reset superuser password: admin')
+            
         # Create standard user
-        if not User.objects.filter(username='citizen1').exists():
-            User.objects.create_user('citizen1', 'citizen@mahalla.com', 'citizenpass', is_verified=True)
+        citizen_user = User.objects.filter(username='citizen1').first()
+        if not citizen_user:
+            citizen_user = User.objects.create_user('citizen1', 'citizen@mahalla.com', 'citizenpass', is_verified=True)
             self.stdout.write('Created user: citizen1')
+        else:
+            citizen_user.set_password('citizenpass')
+            citizen_user.is_verified = True
+            citizen_user.save()
+            self.stdout.write('Reset user password: citizen1')
 
-        admin = User.objects.get(username='admin')
-        citizen = User.objects.get(username='citizen1')
+        admin = admin_user
+        citizen = citizen_user
 
         # Mahalla & Mosque
         if not Mosque.objects.exists():

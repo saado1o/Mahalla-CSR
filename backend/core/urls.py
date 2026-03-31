@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .views import (
     UserViewSet, NewsFeedViewSet, MosqueViewSet, SkillViewSet, CustomAuthToken,
     VolunteerPostingViewSet, VolunteerApplicationViewSet,
-    ZakatContributionHeadViewSet, ZakatLedgerEntryViewSet
+    ZakatContributionHeadViewSet, ZakatLedgerEntryViewSet, SeedDatabaseView
 )
 
 router = DefaultRouter()
@@ -18,5 +18,6 @@ router.register(r'zakat/ledger', ZakatLedgerEntryViewSet, basename='zakat-ledger
 
 urlpatterns = [
     path('auth/login/', CustomAuthToken.as_view(), name='api_token_auth'),
+    path('seed/', SeedDatabaseView.as_view(), name='manual-seed'),
     path('', include(router.urls)),
 ]

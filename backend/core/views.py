@@ -1,4 +1,6 @@
+from django.core.management import call_command
 from rest_framework import viewsets, permissions, status
+from rest_framework.views import APIView
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -28,6 +30,16 @@ class CustomAuthToken(ObtainAuthToken):
             if hasattr(e, 'detail') and isinstance(e.detail, dict):
                 err_msg = " / ".join([f"{k}: {v[0]}" if isinstance(v, list) else f"{k}: {v}" for k, v in e.detail.items()])
             return Response({'error': err_msg}, status=status.HTTP_400_BAD_REQUEST)
+
+class SeedDatabaseView(APIView):
+    permission_classes = [permissions.AllowAny] # In dev, allow anyone to seed
+
+    def post(self, request, *args, **kwargs):
+        try:
+            call_command('seed')
+            return Response({"status": "Database seeding/reset completed successfully!"}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": f"Seeding failed: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
