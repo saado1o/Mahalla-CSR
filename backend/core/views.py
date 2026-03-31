@@ -23,7 +23,11 @@ class CustomAuthToken(ObtainAuthToken):
                 'user': UserSerializer(user).data
             })
         except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            # Flatten dict errors if they are from serializers
+            err_msg = str(e)
+            if hasattr(e, 'detail') and isinstance(e.detail, dict):
+                err_msg = " / ".join([f"{k}: {v[0]}" if isinstance(v, list) else f"{k}: {v}" for k, v in e.detail.items()])
+            return Response({'error': err_msg}, status=status.HTTP_400_BAD_REQUEST)
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()

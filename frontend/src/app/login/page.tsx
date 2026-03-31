@@ -41,7 +41,7 @@ export default function LoginPage() {
                     login(data.token, data.user);
                     router.push('/dashboard');
                 } else {
-                    setError(data.non_field_errors?.[0] || 'Invalid credentials or network error.');
+                    setError(data.error || data.non_field_errors?.[0] || 'Invalid credentials or matching user not found.');
                 }
             } else {
                 // Mock registration or handle actual endpoint
