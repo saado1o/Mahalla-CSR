@@ -1,0 +1,49 @@
+# Robots.txt for MahallaHub (A Project of SBF Consultancy)
+# Fully compliant with Google, Bing, OpenAI, Anthropic, Perplexity, and Apple AI Search Policies
+
+User-agent: *
+Allow: /
+Allow: /sitemap
+Allow: /protocols
+Allow: /dashboard
+Allow: /login
+Allow: /logo.png
+Allow: /favicon.ico
+Disallow: /api/
+
+# Explicit permissions for Generative AI & Answer Engine crawlers (GEO & AEO optimization)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Sitemap Index Reference
+Sitemap: https://mahalla-csr.onrender.com/sitemap.xml

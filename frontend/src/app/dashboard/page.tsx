@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
@@ -256,6 +256,27 @@ export default function Dashboard() {
               Log Out
             </span>
           </button>
+
+          {isSidebarOpen && (
+            <div className="pt-2 px-1 text-[11px] text-[#64748B] border-t border-white/5 space-y-1">
+              <p>
+                A project of{' '}
+                <a
+                  href="https://sbf-consultancy.net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#14B8A6] hover:underline font-semibold"
+                >
+                  SBF Consultancy
+                </a>
+              </p>
+              <div className="flex items-center gap-2 text-[#94A3B8]">
+                <a href="/sitemap" className="hover:text-white transition-colors">Sitemap</a>
+                <span>&middot;</span>
+                <a href="/protocols" className="hover:text-white transition-colors">Protocols</a>
+              </div>
+            </div>
+          )}
         </div>
       </aside>
 

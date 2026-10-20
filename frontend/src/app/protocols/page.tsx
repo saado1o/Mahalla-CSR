@@ -1,8 +1,10 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ShieldCheck, ArrowLeft, CheckCircle2, AlertTriangle, FileText, Scale } from 'lucide-react';
+import { ShieldCheck, ArrowLeft, CheckCircle2, AlertTriangle, FileText, Scale, Globe } from 'lucide-react';
+import Footer from '@/components/Footer';
 
 export default function ProtocolPage() {
     const router = useRouter();
@@ -11,47 +13,50 @@ export default function ProtocolPage() {
         {
             title: "Identity Verification Protocol",
             icon: ShieldCheck,
-            content: "To maintain the sanctity and safety of the Mahalla, every new resident must undergo a mandatory document audit. This includes submitting a valid government-issued ID (CNIC) or a verified Utility Bill from the current sector. Admin approval is required before access to neighborhood features is granted."
+            content: "To maintain the sanctity and safety of the Mahalla, every new resident must undergo a mandatory document audit. This includes submitting a valid government-issued ID (CNIC) or a verified Utility Bill from the current sector. Admin Mosque Shura approval is required before access to neighborhood features is granted."
         },
         {
             title: "Community Ethics & Conduct",
             icon: Scale,
-            content: "MahallaHub is built on mutual respect. Any form of harassment, unauthorized data sharing (Purdah violation), or misuse of the Emergency SOS feature will result in immediate permanent expulsion from the digital registry."
+            content: "MahallaHub is built on mutual respect and Islamic neighborly trust. Any form of harassment, unauthorized data sharing (Purdah violation), or misuse of the Emergency SOS feature will result in immediate permanent expulsion from the digital registry."
         },
         {
-            title: "Purdah & Privacy Mode",
+            title: "Purdah & Privacy Shield Mode",
             icon: FileText,
-            content: "Residents have the right to 'Purdah Mode'. When enabled, your exact house location and profile picture are masked from general search results. Only verified community admins and emergency responders can override these settings during active SOS alerts."
+            content: "Residents have the right to 'Purdah Mode'. When enabled, your exact house location and profile picture are masked from general search results with a 50-meter generalized radius overlay. Only verified community admins and emergency first responders can override these settings during active SOS alerts."
         },
         {
-            title: "Resource Sharing Guidelines",
+            title: "Resource Sharing & Halal Barter Guidelines",
             icon: CheckCircle2,
-            content: "The Skill Barter and Rizq Sharing modules are strictly non-commercial. No monetary transactions are permitted within these sectors. All trades must be based on community support and volunteering."
+            content: "The Skill Barter and Rizq Sharing modules are strictly non-commercial and cashless. No interest, usury, or unauthorized commercial transactions are permitted within these sectors. All trades must be grounded in mutual community support, tool sharing, and voluntary cooperation."
         },
         {
-            title: "Misuse & Penalties",
+            title: "Misuse & Emergency False Alarm Penalties",
             icon: AlertTriangle,
-            content: "False emergency alerts are treated as a breach of community trust. Multiple false alarms may lead to a temporary suspension and a review by the Mahalla Audit committee."
+            content: "Emergency SOS panic alerts trigger rapid sub-second dispatch to 50 nearest neighbors. False alarms breach community trust and safety protocols, resulting in temporary suspension and mandatory review by the Mahalla Audit Committee."
         }
     ];
 
     return (
-        <div className="min-h-screen bg-[#0F172A] selection:bg-[#14B8A6]/30 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
+        <div className="min-h-screen bg-[#0F172A] selection:bg-[#14B8A6]/30 flex flex-col justify-between">
+            <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full flex-1">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-12">
                     <button
                         onClick={() => router.back()}
-                        className="flex items-center gap-2 text-[#94A3B8] hover:text-white transition-colors font-medium group text-sm"
+                        className="flex items-center gap-2 text-[#94A3B8] hover:text-white transition-colors font-medium group text-sm cursor-pointer"
                     >
                         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         Back to Gateway
                     </button>
                     <div className="flex flex-col items-end">
-                        <h1 className="text-2xl font-black text-white uppercase tracking-tighter">
+                        <Link href="/" className="text-2xl font-black text-white uppercase tracking-tighter">
                             Mahalla<span className="text-[#14B8A6]">Hub</span> Protocols
-                        </h1>
+                        </Link>
                         <div className="h-1 w-24 bg-[#14B8A6] rounded-full mt-1"></div>
+                        <span className="text-[10px] text-[#94A3B8] tracking-widest uppercase font-semibold mt-1">
+                            An SBF Consultancy Project
+                        </span>
                     </div>
                 </div>
 
@@ -78,10 +83,16 @@ export default function ProtocolPage() {
 
                 <div className="mt-12 text-center p-8 bg-[#14B8A6]/5 border border-[#14B8A6]/10 rounded-3xl">
                     <p className="text-sm text-[#94A3B8] max-w-2xl mx-auto leading-loose italic">
-                        By entering this digital jurisdiction, you agree to uphold the dignity of the neighborly bond and the collective safety of the Mahalla.
+                        By entering this digital jurisdiction, you agree to uphold the dignity of the neighborly bond and the collective safety of the Mahalla. Engineered in partnership with{' '}
+                        <a href="https://sbf-consultancy.net" target="_blank" rel="noopener noreferrer" className="text-[#14B8A6] font-bold underline">
+                            SBF Consultancy
+                        </a>
+                        .
                     </p>
                 </div>
             </div>
+
+            <Footer />
         </div>
     );
 }

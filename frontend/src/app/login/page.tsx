@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -261,6 +261,27 @@ export default function LoginPage() {
                 </p>
 
             </div>
+                <div className="mt-8 text-center text-xs text-[#64748B] space-y-2">
+                    <p>
+                        A project of{' '}
+                        <a
+                            href="https://sbf-consultancy.net"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#14B8A6] hover:underline font-semibold"
+                        >
+                            SBF Consultancy
+                        </a>
+                        {' '}(<a href="https://sbf-consultancy.net" target="_blank" rel="noopener noreferrer" className="hover:text-white">sbf-consultancy.net</a>)
+                    </p>
+                    <div className="flex items-center justify-center gap-4 text-[#94A3B8]">
+                        <Link href="/sitemap" className="hover:text-white transition-colors">Sitemap</Link>
+                        <span>�</span>
+                        <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">XML</a>
+                        <span>�</span>
+                        <Link href="/" className="hover:text-white transition-colors">Home Gateway</Link>
+                    </div>
+                </div>
         </div>
     );
 }
